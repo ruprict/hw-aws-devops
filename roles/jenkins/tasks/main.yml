@@ -1,0 +1,7 @@
+---
+# tasks file for jenkins
+
+- name: Import Jenkins GPG key
+  rpm_key:
+    state: present
+    key: http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
