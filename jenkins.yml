@@ -2,5 +2,6 @@
 - hosts: "{{ target | default('localhost') }}"
   become: yes
   roles:
+    - java8
     - jenkins
     - nodejs
