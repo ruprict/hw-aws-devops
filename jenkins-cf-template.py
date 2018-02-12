@@ -1,5 +1,17 @@
 #! /usr/bin/env python
 """Generating CloudFormation template."""
+
+from troposphere import (
+		Base64,
+		ec2,
+		GetAtt,
+		Join,
+		Output,
+		Parameter,
+		Ref,
+		Template,
+		)
+
 from troposphere.iam import (
     InstanceProfile,
     PolicyType as IAMPolicy,
@@ -94,7 +106,6 @@ t.add_resource(ec2.Instance(
 	UserData=ud,
 	IamInstanceProfile=Ref("InstanceProfile"),
 ))
-	))
 
 t.add_output(Output(
 	"InstancePublicIp",
