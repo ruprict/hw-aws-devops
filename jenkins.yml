@@ -2,6 +2,11 @@
 - hosts: "{{ target | default('localhost') }}"
   become: yes
   roles:
-    - java8
+    - williamyeh.oracle-java
     - jenkins
     - nodejs
+  vars:
+    java_version: 8
+    java_download_from_oracle: false
+    java_subversion: 162
+    java_tarball_file: jdk-8u162-linux-x64

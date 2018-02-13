@@ -88,7 +88,7 @@ def get_package(module, pkg_type):
 
 def install_pacakge(source, pkg_type):
     cmd = ''
-    if pkg_type == 'deb': 
+    if pkg_type == 'deb':
         cmd = 'dpkg -i ' + source + '; apt-get -q -y -f install'
     elif pkg_type == 'rpm':
         cmd = 'yum install -q -y ' + source
@@ -100,7 +100,7 @@ def install_pacakge(source, pkg_type):
 def main():
     module = AnsibleModule(
         argument_spec = dict(
-            enabled   = dict(required=True, choices=BOOLEANS) # TODO actually use this
+            enabled   = dict(required=True, type='bool', choices=BOOLEANS) # TODO actually use this
         )
     )
 
