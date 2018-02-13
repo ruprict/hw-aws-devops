@@ -96,6 +96,18 @@ ud = Base64(Join('\n', [
     "echo '*/10 * * * * {}' > /etc/cron.d/ansible-pull".format(AnsiblePullCmd)
 ]))
 
+t.add_resource(IAMPolicy("Policy",
+    PolicyName="AllowCodePipeline",
+    PolicyDocument=Policy(
+        Statement=[
+            Statement(Effect=Allow,
+                Action=[Action("codepipeline", "*")],
+                Resource=["*"])
+        ]
+    ),
+    Roles=[Ref("Role")]
+))
+
 t.add_resource(ec2.Instance(
 	"instance",
 	ImageId="ami-97785bed",
